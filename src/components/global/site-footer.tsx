@@ -1,8 +1,5 @@
 "use client";
-
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Facebook,
   Instagram,
@@ -25,7 +22,7 @@ export function SiteFooter() {
       <div className="absolute bottom-40 left-10 w-24 h-24 bg-green-500/5 rounded-md rotate-12 animate-float"></div>
 
       <div className="container py-12 md:py-16 relative z-10">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 lg:grid-cols-2">
           <motion.div
             className="space-y-4"
             initial={{ opacity: 0, y: 20 }}
@@ -67,88 +64,64 @@ export function SiteFooter() {
             </div>
           </motion.div>
 
-          <motion.div
-            className="space-y-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <h3 className="text-lg font-semibold">Quick Links</h3>
-            <ul className="space-y-2">
-              {[
-                { name: "Home", href: "/" },
-                { name: "Services", href: "#services" },
-                { name: "Projects", href: "#projects" },
-                { name: "About Us", href: "#about" },
-                { name: "Contact", href: "#contact" },
-              ].map((link, i) => (
-                <li key={i}>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200 relative group"
-                  >
-                    {link.name}
-                    <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                  </Link>
+          <div className="flex flex-col sm:flex-row gap-8 items-start justify-between">
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <h3 className="text-lg font-semibold">Quick Links</h3>
+              <ul className="space-y-2">
+                {[
+                  { name: "Home", href: "/" },
+                  { name: "Services", href: "#services" },
+                  { name: "Projects", href: "#projects" },
+                  { name: "About Us", href: "#about" },
+                  { name: "Contact", href: "#contact" },
+                ].map((link, i) => (
+                  <li key={i}>
+                    <Link
+                      href={link.href}
+                      className="text-muted-foreground hover:text-primary transition-colors duration-200 relative group"
+                    >
+                      {link.name}
+                      <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <h3 className="text-lg font-semibold">Contact Info</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2">
+                  <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">
+                    Kathmandu, Nepal
+                  </span>
                 </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div
-            className="space-y-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <h3 className="text-lg font-semibold">Contact Info</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-2">
-                <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">Kathmandu, Nepal</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-5 w-5 text-primary shrink-0" />
-                <span className="text-muted-foreground">+977 1 4123456</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="h-5 w-5 text-primary shrink-0" />
-                <span className="text-muted-foreground">
-                  info@electrowizard.com.np
-                </span>
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            className="space-y-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <h3 className="text-lg font-semibold">Newsletter</h3>
-            <p className="text-sm text-muted-foreground">
-              Subscribe to our newsletter for updates and offers.
-            </p>
-            <div className="flex gap-2">
-              <Input
-                type="email"
-                placeholder="Your email"
-                className="max-w-[220px] border-primary/20 focus:border-primary focus:ring-primary"
-              />
-              <Button
-                type="submit"
-                size="sm"
-                className="relative overflow-hidden group spotlight"
-              >
-                <span className="relative z-10">Subscribe</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              </Button>
-            </div>
-          </motion.div>
+                <li className="flex items-center gap-2">
+                  <Phone className="h-5 w-5 text-primary shrink-0" />
+                  <span className="text-muted-foreground">+977 1 4123456</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail className="h-5 w-5 text-primary shrink-0" />
+                  <span className="text-muted-foreground">
+                    info@electrowizard.com.np
+                  </span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
         </div>
 
         <motion.div

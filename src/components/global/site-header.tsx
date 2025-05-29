@@ -14,8 +14,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "Products", href: "#products" },
   { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
+  { name: "Solutions", href: "#solutions" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -38,9 +37,9 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed top-0 z-40 w-full py-3 transition-all duration-300",
+        "fixed top-0 z-40 w-full py-3 transition-colors duration-300",
         isScrolled
-          ? "bg-background/80 text-black backdrop-blur-md border-b shadow-sm"
+          ? "bg-background text-black backdrop-blur-md border-b border-b-gray-100 shadow-sm"
           : "bg-transparent text-white"
       )}
     >
@@ -70,8 +69,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-4">
-          {/* <ThemeToggle /> */}
-
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}

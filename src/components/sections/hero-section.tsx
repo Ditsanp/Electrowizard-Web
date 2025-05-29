@@ -8,9 +8,9 @@ export function Hero() {
   return (
     <div className="relative h-auto min-h-screen xl:min-h-0 xl:h-screen 2xl:max-h-[1080px] flex flex-col">
       <Image
-        src="/heroimage.png"
+        src="/pagehero.webp"
         alt="Car Charging"
-        className="object-cover saturate-[65%]"
+        className="object-cover saturate-[75%]"
         fill
         priority
       />
@@ -36,7 +36,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.div
-            className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-500"
+            className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-green-400/30 bg-green-400/10 text-green-400"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -49,7 +49,7 @@ export function Hero() {
 
           <div className="w-full">
             <h1 className="text-5xl font-firaSans text-center uppercase md:text-6xl xl:text-7xl 2xl:text-8xl lg:text-6xl font-extrabold tracking-normal">
-              Charge <span className="text-green-500">Smart,</span> Drive Clean
+              Charge <span className="text-">Smart,</span> Drive Clean
               <span className="text-primary">.</span>
             </h1>
           </div>
@@ -73,7 +73,7 @@ export function Hero() {
           >
             <Button
               size="lg"
-              className="gap-2 group relative overflow-hidden bg-green-500 font-bold text-white hover:bg-green-600 transition-colors cursor-pointer"
+              className="gap-2 group relative overflow-hidden bg-brand-primary font-bold text-white hover:bg-green-600 transition-colors cursor-pointer"
             >
               <span className="relative z-10">Explore Products</span>
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
@@ -109,7 +109,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 + i * 0.1, duration: 0.5 }}
               >
-                <div className="text-xl font-bold text-green-400">
+                <div className="text-xl font-bold text-brand-primary">
                   {stat.value}
                 </div>
                 <div className="text-lg text-gray-200">{stat.label}</div>
