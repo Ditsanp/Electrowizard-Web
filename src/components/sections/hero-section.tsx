@@ -8,13 +8,13 @@ export function Hero() {
   return (
     <div className="relative h-auto min-h-screen xl:min-h-0 xl:h-screen 2xl:max-h-[1080px] flex flex-col">
       <Image
-        src="/pagehero.webp"
+        src="/hero-image.jpg"
         alt="Car Charging"
         className="object-cover saturate-[75%]"
         fill
         priority
       />
-      <div className="absolute inset-0 bg-black/40"></div>
+      {/* <div className="absolute inset-0 bg-black/40"></div> */}
 
       <div
         aria-hidden
@@ -28,7 +28,7 @@ export function Hero() {
 
       {/* Main content */}
 
-      <div className="backdrop-blur-xs text-white flex-1 flex flex-col md:flex-row items-center justify-center relative z-10 py-12 md:py-20 gap-8">
+      <div className="text-white flex-1 flex flex-col md:flex-row items-center justify-center relative z-10 py-12 md:py-20 gap-8">
         <motion.div
           className="flex container mt-32 sm:mt-0 flex-col items-center text-left max-w-3xl space-y-6"
           initial={{ opacity: 0, x: -20 }}
@@ -49,8 +49,9 @@ export function Hero() {
 
           <div className="w-full">
             <h1 className="text-5xl text-center md:text-6xl xl:text-7xl lg:text-6xl font-medium tracking-normal">
-              Charge <span className="text-">Smart,</span> Drive Clean
-              <span className="text-primary">.</span>
+              Charge <span className="text-brand-primary">Smart,</span> Drive
+              Clean
+              <span className="text-brand-primary">.</span>
             </h1>
           </div>
 

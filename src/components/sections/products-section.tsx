@@ -5,6 +5,57 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ProductCard from "@/components/cards/product-card";
 
+const products = [
+  {
+    title: "Wall Mount EV Chargers",
+    description:
+      "Smart 7-22kW AC, IP65 Rated charging solutions for residential and commercial use.",
+    features: [
+      "Universal compatibility",
+      "Weather-resistant design",
+      "Smart chip technology",
+    ],
+    imageSrc:
+      "https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=200&h=200&fit=crop&crop=center",
+    imageAlt: "Wall Mount EV Charger",
+    bgColor: "bg-gradient-to-br from-emerald-100 to-emerald-50",
+    textColor: "text-gray-800",
+  },
+  {
+    title: "Pedestal Mount EV Chargers",
+    description:
+      "Smart 7-22kW AC, IP65 Rated pedestal charging stations for parking lots and public spaces.",
+    features: ["Multi-standard support", "Auto-detection", "Safety certified"],
+    imageSrc:
+      "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=200&h=200&fit=crop&crop=center",
+    imageAlt: "Pedestal Mount EV Charger",
+    bgColor: "bg-gradient-to-br from-teal-100 to-cyan-50",
+    textColor: "text-gray-800",
+  },
+  {
+    title: "Superfast EV Chargers",
+    description:
+      "Smart 60kW DC fast charging solutions for rapid vehicle charging and fleet operations.",
+    features: ["Up to 350kW power", "Remote monitoring", "Billing integration"],
+    imageSrc:
+      "https://images.unsplash.com/photo-1593941707882-a5bac6861d75?w=200&h=200&fit=crop&crop=center",
+    imageAlt: "Superfast EV Charger",
+    bgColor: "bg-gradient-to-br from-green-500 to-emerald-600",
+    textColor: "text-white",
+  },
+  {
+    title: "Portable Chargers",
+    description:
+      "Compact and lightweight charging solutions perfect for travel and emergency situations.",
+    features: ["Lightweight design", "Multiple outlets", "Emergency backup"],
+    imageSrc:
+      "https://images.unsplash.com/photo-1609267119774-bb5c4e30476c?w=200&h=200&fit=crop&crop=center",
+    imageAlt: "Portable EV Charger",
+    bgColor: "bg-gradient-to-br from-lime-100 to-green-50",
+    textColor: "text-gray-800",
+  },
+];
+
 export default function ProductsSection() {
   return (
     <section id="products" className="py-32 relative overflow-hidden">
@@ -36,7 +87,7 @@ export default function ProductsSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
           <ProductCard
             icon={Cable}
             title="Charging Cables"
@@ -89,6 +140,22 @@ export default function ProductsSection() {
             delayIndex={3}
             gradient="from-orange-500 to-red-500"
           />
+        </div> */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-auto">
+          {products.map((product, index) => (
+            <div key={index} className="h-80">
+              <ProductCard
+                title={product.title}
+                description={product.description}
+                features={product.features}
+                imageSrc={product.imageSrc}
+                imageAlt={product.imageAlt}
+                bgColor={product.bgColor}
+                textColor={product.textColor}
+              />
+            </div>
+          ))}
         </div>
 
         <motion.div

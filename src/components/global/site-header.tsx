@@ -39,7 +39,7 @@ export function SiteHeader() {
       className={cn(
         "fixed top-0 z-40 w-full py-3 transition-colors duration-300",
         isScrolled
-          ? "bg-background text-black backdrop-blur-md border-b border-b-gray-100 shadow-sm"
+          ? "bg-black/60 text-white backdrop-blur-md border-b border-b-gray-800 shadow-sm"
           : "bg-transparent text-white"
       )}
     >
