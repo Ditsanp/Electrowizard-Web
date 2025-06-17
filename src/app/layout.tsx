@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import { Fira_Sans, Montserrat } from "next/font/google";
+import { Afacad, Fira_Sans, Montserrat, Outfit } from "next/font/google";
 import "./globals.css";
 import AppThemeProvider from "@/providers/theme-provider";
 import { SiteFooter } from "@/components/global/site-footer";
 import { SiteHeader } from "@/components/global/site-header";
 
-const lexendDeca = Montserrat({
-  variable: "--font-lexendDeca",
+const outfit = Afacad({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
-});
-
-const firaSans = Fira_Sans({
-  variable: "--font-firaSans",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -29,9 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${lexendDeca.variable} ${firaSans.variable} antialiased`}
-      >
+      <body className={`${outfit.className} antialiased`}>
         <AppThemeProvider>
           <SiteHeader />
 

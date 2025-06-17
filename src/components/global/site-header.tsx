@@ -50,34 +50,32 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        <nav className="hidden lg:flex gap-8">
-          {navigation.map((item, i) => (
-            <motion.div
-              key={item.name}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.3 }}
-            >
-              <Link
-                href={item.href}
-                className="text-sm hover:text-green-500 font-medium transition-colors relative group"
+        <div className="flex items-center gap-8">
+          <nav className="hidden lg:flex gap-8">
+            {navigation.map((item, i) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1, duration: 0.3 }}
               >
-                {item.name}
-              </Link>
-            </motion.div>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-4">
+                <Link
+                  href={item.href}
+                  className="hover:text-green-500 font-medium transition-colors relative group"
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
+            ))}
+          </nav>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.3 }}
           >
             <Button
-              size="sm"
-              className={`hidden lg:flex rounded-full bg-transparent border hover:bg-primary hover:text-green-500
-                  ${isScrolled ? "text-black border-black" : "text-white"}
+              className={`hidden border-brand-primary lg:flex border bg-brand-primary
+               
                 `}
             >
               Get a Quote

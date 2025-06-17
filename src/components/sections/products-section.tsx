@@ -25,7 +25,7 @@ export default function ProductsSection() {
             <Zap className="h-4 w-4 mr-2" />
             <span className="text-sm font-medium">Our Products</span>
           </motion.div>
-          <h2 className="text-4xl mt-6 md:text-6xl font-firaSans font-bold mb-8">
+          <h2 className="text-4xl mt-6 md:text-6xl font-bold mb-8">
             Revolutionary EV
             <span className="block text-green-600">Charging Solutions</span>
           </h2>

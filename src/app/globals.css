@@ -11,8 +11,6 @@
 
 @theme inline {
   --color-background: var(--background);
-  --font-lexendDeca: "Montserrat", sans-serif;
-  --font-firaSans: "Fira Sans", sans-serif;
   --color-foreground: var(--foreground);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -143,7 +141,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-lexendDeca;
+    @apply bg-background text-foreground;
   }
   .container {
     @apply mx-auto px-4;

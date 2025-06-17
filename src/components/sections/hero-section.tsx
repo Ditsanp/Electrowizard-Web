@@ -48,7 +48,7 @@ export function Hero() {
           </motion.div>
 
           <div className="w-full">
-            <h1 className="text-5xl font-firaSans text-center uppercase md:text-6xl xl:text-7xl 2xl:text-8xl lg:text-6xl font-extrabold tracking-normal">
+            <h1 className="text-5xl text-center md:text-6xl xl:text-7xl lg:text-6xl font-medium tracking-normal">
               Charge <span className="text-">Smart,</span> Drive Clean
               <span className="text-primary">.</span>
             </h1>
