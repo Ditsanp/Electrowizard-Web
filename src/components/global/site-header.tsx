@@ -37,9 +37,9 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed top-0 z-40 w-full py-3 transition-colors duration-300",
+        "fixed top-0 z-40 w-full py-3 transition-colors duration-300 ease-in-out",
         isScrolled
-          ? "bg-black/60 text-white backdrop-blur-md border-b border-b-gray-800 shadow-sm"
+          ? "bg-black/60 text-white backdrop-blur-md shadow-sm"
           : "bg-transparent text-white"
       )}
     >
@@ -74,8 +74,7 @@ export function SiteHeader() {
             transition={{ delay: 0.4, duration: 0.3 }}
           >
             <Button
-              className={`hidden border-brand-primary lg:flex border bg-brand-primary
-               
+              className={`hidden border-brand-primary lg:flex border bg-brand-primary hover:bg-transparent hover:text-brand-primary
                 `}
             >
               Get a Quote
