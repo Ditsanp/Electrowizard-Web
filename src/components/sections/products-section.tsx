@@ -49,13 +49,10 @@ const products = [
 
 export default function ProductsSection() {
   return (
-    <section
-      id="products"
-      className="py-16 relative overflow-hidden bg-brand-primary"
-    >
+    <section id="products" className="py-16 relative overflow-hidden">
       <div className="container mx-auto relative z-10">
         <motion.div
-          className="text-left text-white grid md:grid-cols-2 justify-center items-center mx-auto mb-10"
+          className="text-left text-black grid md:grid-cols-2 justify-center items-center mx-auto mb-10"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

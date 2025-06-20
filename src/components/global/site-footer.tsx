@@ -8,13 +8,13 @@ import {
   MapPin,
   Phone,
   Twitter,
-  Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-background border-t relative overflow-hidden">
+    <footer className="bg-black border-t relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-20 right-10 w-32 h-32 border-2 border-green-500/10 rounded-full animate-spin-slow opacity-20"></div>
       <div className="absolute bottom-40 left-10 w-24 h-24 bg-green-500/5 rounded-md rotate-12 animate-float"></div>
@@ -29,12 +29,9 @@ export function SiteFooter() {
             transition={{ duration: 0.5 }}
           >
             <Link href="/" className="flex items-center space-x-2 group">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-green-600 transition-transform duration-300 group-hover:scale-110">
-                <Zap className="h-6 w-6 text-white" />
-              </div>
-              <span className="font-bold text-xl">Electro Wizard</span>
+              <Image src={"/logo.png"} width={120} height={40} alt="Logo" />
             </Link>
-            <p className="text-sm text-muted-foreground max-w-xs">
+            <p className="text-sm text-gray-300 max-w-xs">
               Providing innovative electrical solutions and services across
               Nepal with expertise and reliability.
             </p>
@@ -52,7 +49,7 @@ export function SiteFooter() {
                 >
                   <Link
                     href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                    className="text-gray-300 hover:text-primary transition-colors duration-200"
                   >
                     {social.icon}
                     <span className="sr-only">{social.label}</span>
@@ -82,7 +79,7 @@ export function SiteFooter() {
                   <li key={i}>
                     <Link
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors duration-200 relative group"
+                      className="text-gray-300 hover:text-primary transition-colors duration-200 relative group"
                     >
                       {link.name}
                       <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
@@ -103,17 +100,15 @@ export function SiteFooter() {
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                  <span className="text-muted-foreground">
-                    Kathmandu, Nepal
-                  </span>
+                  <span className="text-gray-300">Kathmandu, Nepal</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="h-5 w-5 text-primary shrink-0" />
-                  <span className="text-muted-foreground">+977 1 4123456</span>
+                  <span className="text-gray-300">+977 1 4123456</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="h-5 w-5 text-primary shrink-0" />
-                  <span className="text-muted-foreground">
+                  <span className="text-gray-300">
                     info@electrowizard.com.np
                   </span>
                 </li>
@@ -129,20 +124,20 @@ export function SiteFooter() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-gray-300">
             © {new Date().getFullYear()} Electro Wizard Nepal. All rights
             reserved.
           </p>
           <div className="flex gap-4">
             <Link
               href="/privacy"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+              className="text-sm text-gray-300 hover:text-primary transition-colors duration-200"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+              className="text-sm text-gray-300 hover:text-primary transition-colors duration-200"
             >
               Terms of Service
             </Link>
