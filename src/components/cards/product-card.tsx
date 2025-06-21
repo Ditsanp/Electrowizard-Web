@@ -22,12 +22,16 @@ const ProductCard = ({
     <div
       className={`${bgColor} rounded-2xl p-6 relative overflow-hidden h-full flex flex-col`}
     >
-      <div className="relative z-10 flex flex-col md:flex-row items-start gap-10 h-full">
+      <div className="relative z-10 flex gap-10 items-center h-full">
         {/* Header */}
-        <div>
+        <div className="flex flex-col justify-between h-full">
           <div className="mb-4">
-            <h3 className={`text-3xl font-bold mb-2 ${textColor}`}>{title}</h3>
-            <p className={`text-lg opacity-90 ${textColor}`}>{description}</p>
+            <h3 className={`text-2xl lg:text-3xl font-bold mb-2 ${textColor}`}>
+              {title}
+            </h3>
+            <p className={`text-lg lg:text-xl mt-5 opacity-90 ${textColor}`}>
+              {description}
+            </p>
           </div>
 
           {/* Learn more button */}
@@ -35,22 +39,20 @@ const ProductCard = ({
             <button
               className={`flex items-center gap-2 ${textColor} hover:opacity-80 transition-opacity group`}
             >
-              <span className="text-sm font-medium">Learn more</span>
+              <span className="text-lg font-medium">Learn more</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
 
         {/* Product image */}
-        <div className="flex justify-center items-center mt-auto">
-          <Image
-            width={500}
-            height={500}
-            src={imageSrc}
-            alt={imageAlt}
-            className="w-100 h-6`0 drop-shadow-lg"
-          />
-        </div>
+        <Image
+          width={800}
+          height={800}
+          src={imageSrc}
+          alt={imageAlt}
+          className="w-60 drop-shadow-lg"
+        />
       </div>
     </div>
   );

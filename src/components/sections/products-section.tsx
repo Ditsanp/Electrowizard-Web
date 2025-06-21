@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ProductCard from "@/components/cards/product-card";
+import SectionHeader from "@/components/reusables/section-header";
 
 const products = [
   {
@@ -51,24 +52,10 @@ export default function ProductsSection() {
   return (
     <section id="products" className="py-16 relative overflow-hidden">
       <div className="container mx-auto relative z-10">
-        <motion.div
-          className="text-left text-black grid md:grid-cols-2 justify-center items-center mx-auto mb-10"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl mt-6 md:text-6xl font-bold mb-8">
-            Revolutionary EV Charging Solutions
-          </h2>
-
-          <p className="text-xl leading-relaxed">
-            Discover our comprehensive range of cutting-edge charging products
-            designed specifically for Nepal&apos;s unique requirements and
-            infrastructure.
-          </p>
-        </motion.div>
-
+        <SectionHeader
+          title="Revolutionary EV Charging Solutions"
+          subtitle="Discover our comprehensive range of cutting-edge charging products designed specifically for Nepal's unique requirements and infrastructure."
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-auto">
           {products.map((product, index) => (
             <div key={index} className="h-80">
@@ -91,7 +78,7 @@ export default function ProductsSection() {
           transition={{ duration: 0.6, delay: 0.7 }}
           viewport={{ once: true }}
         >
-          <Button asChild size="lg" className="rounded-2xl px-8 group">
+          <Button asChild size="lg" className="rounded-2xl mt-10 px-8 group">
             <Link href="/products" className="flex items-center space-x-2">
               <span>Explore All Products</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />

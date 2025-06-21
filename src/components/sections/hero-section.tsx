@@ -8,10 +8,11 @@ export function Hero() {
   return (
     <div className="relative h-auto min-h-screen xl:min-h-0 xl:h-screen 2xl:max-h-[1080px] flex flex-col">
       <Image
-        src="/hero-image.jpg"
+        src="/hero-image.png"
         alt="Car Charging"
         className="object-cover saturate-[75%]"
         fill
+        quality={100}
         priority
       />
 
@@ -25,7 +26,7 @@ export function Hero() {
         }}
       />
 
-      <div className="text-white flex-1 flex flex-col md:flex-row items-center lg:items-end justify-center relative z-10 py-12 md:py-20 gap-8">
+      <div className="backdrop-blur-[2px] text-white flex-1 flex flex-col md:flex-row items-center lg:items-end justify-center relative z-10 py-12 md:py-20 gap-8">
         <motion.div
           className="flex container sm:mt-0 flex-col items-center lg:items-start space-y-4"
           initial={{ opacity: 0, x: -20 }}

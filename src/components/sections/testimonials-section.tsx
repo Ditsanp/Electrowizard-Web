@@ -1,15 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Quote, Star } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Star, ArrowLeft, ArrowRight } from "lucide-react";
+import SectionHeader from "@/components/reusables/section-header";
 
 interface Testimonial {
   id: number;
@@ -18,7 +13,6 @@ interface Testimonial {
   company: string;
   content: string;
   rating: number;
-  avatar?: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -79,117 +73,153 @@ const testimonials: Testimonial[] = [
 ];
 
 export default function Testimonials() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100");
-            entry.target.classList.remove("opacity-0", "translate-y-10");
-          }
-        });
-      },
-      { threshold: 0.1 }
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const nextTestimonial = () => {
+    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    setIsAutoPlaying(false);
+  };
+
+  const prevTestimonial = () => {
+    setActiveIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
     );
-
-    const elements = sectionRef.current?.querySelectorAll(".animate-on-scroll");
-    if (elements) {
-      elements.forEach((el) => observer.observe(el));
-    }
-
-    return () => {
-      if (elements) {
-        elements.forEach((el) => observer.unobserve(el));
-      }
-    };
-  }, []);
+    setIsAutoPlaying(false);
+  };
 
   return (
-    <section
-      className="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden"
-      ref={sectionRef}
-    >
-      <div className="container mx-auto relative z-10">
-        <div className="text-center mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700">
-            What Our
-            <span className="block text-brand-primary">Customers Say</span>
-          </h2>
-          <p className="text-lg text-muted-foreground animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-100 leading-relaxed">
-            Hear from businesses and individuals who&apos;ve transformed their
-            transportation experience with ElectroWizard&apos;s charging
-            solutions.
-          </p>
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <SectionHeader
+          title={
+            <span>
+              Don't Take Our Word For It, Hear From{" "}
+              <span className="text-brand-primary">Our Customers</span>
+            </span>
+          }
+          subtitle="Discover how ElectroWizard is transforming the EV charging experience in Nepal through real customer stories."
+          id="testimonials"
+        />
+
+        {/* Main testimonial */}
+        <div className="max-w-5xl mx-auto mb-16">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <Card className="border-0 shadow-lg bg-gray-50">
+                <CardContent className="p-8 md:p-12">
+                  {/* Rating */}
+                  <div className="flex items-center justify-center mb-8">
+                    {[...Array(testimonials[activeIndex].rating)].map(
+                      (_, i) => (
+                        <Star
+                          key={i}
+                          className="h-5 w-5 fill-green-500 text-green-500 mx-1"
+                        />
+                      )
+                    )}
+                  </div>
+
+                  {/* Quote */}
+                  <blockquote className="text-2xl text-gray-800 text-center mb-8 leading-relaxed font-light">
+                    "{testimonials[activeIndex].content}"
+                  </blockquote>
+
+                  {/* Author */}
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">
+                      {testimonials[activeIndex].name.charAt(0)}
+                    </div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-1">
+                      {testimonials[activeIndex].name}
+                    </h4>
+                    <p className="text-gray-600 mb-1">
+                      {testimonials[activeIndex].role}
+                    </p>
+                    <p className="text-green-600 font-medium">
+                      {testimonials[activeIndex].company}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        <div className="relative mx-auto animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-200">
-          <div className="absolute top-0 left-8 text-brand-primary/10 z-0">
-            <Quote size={80} />
+        {/* Navigation */}
+        <div className="flex items-center justify-center gap-8 mb-12">
+          <button
+            onClick={prevTestimonial}
+            className="w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors duration-200"
+          >
+            <ArrowLeft className="w-5 h-5 text-gray-600" />
+          </button>
+
+          {/* Progress dots */}
+          <div className="flex gap-2">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setActiveIndex(index);
+                  setIsAutoPlaying(false);
+                }}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === activeIndex
+                    ? "bg-green-500 w-8"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+              />
+            ))}
           </div>
 
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
+          <button
+            onClick={nextTestimonial}
+            className="w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors duration-200"
           >
-            <CarouselContent className="-ml-4">
-              {testimonials.map((testimonial) => (
-                <CarouselItem
-                  key={testimonial.id}
-                  className="pl-4 md:basis-1/2 lg:basis-1/3"
-                >
-                  <Card className="h-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-2xl transition-all duration-300 hover:-translate-y-1">
-                    <CardContent className="p-6 flex flex-col h-full">
-                      {/* Rating */}
-                      <div className="flex items-center mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className="h-4 w-4 fill-brand-primary text-brand-primary"
-                          />
-                        ))}
-                      </div>
-
-                      {/* Content */}
-                      <blockquote className="text-gray-700 dark:text-gray-300 mb-6 flex-grow leading-relaxed">
-                        &quot;{testimonial.content}&quot;
-                      </blockquote>
-
-                      {/* Author */}
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
-                          <span className="text-brand-primary font-bold text-lg">
-                            {testimonial.name.charAt(0)}
-                          </span>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-900 dark:text-gray-100">
-                            {testimonial.name}
-                          </p>
-                          <p className="text-sm text-muted-foreground">
-                            {testimonial.role}
-                          </p>
-                          <p className="text-xs text-brand-primary font-medium">
-                            {testimonial.company}
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-
-            <div className="flex justify-center mt-8 space-x-4">
-              <CarouselPrevious className="relative inset-0 translate-y-0 w-12 h-12 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-300" />
-              <CarouselNext className="relative inset-0 translate-y-0 w-12 h-12 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-300" />
-            </div>
-          </Carousel>
+            <ArrowRight className="w-5 h-5 text-gray-600" />
+          </button>
         </div>
+
+        {/* Stats */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-16 border-t border-gray-200"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          {[
+            { number: "500+", label: "Happy Customers" },
+            { number: "50+", label: "Charging Stations" },
+            { number: "99.9%", label: "Uptime" },
+            { number: "24/7", label: "Support" },
+          ].map((stat, index) => (
+            <div key={index} className="text-center">
+              <div className="text-3xl font-bold text-green-600 mb-2">
+                {stat.number}
+              </div>
+              <div className="text-gray-600 text-sm">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
