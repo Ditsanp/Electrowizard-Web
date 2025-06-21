@@ -9,23 +9,16 @@ export default function AboutUsPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Section with padding to account for fixed navbar */}
       <section className="relative bg-gradient-to-r from-green-50 to-green-100 pt-28 pb-20">
-        <Image
-          src="/pagehero.webp"
-          alt="Car Charging"
-          className="object-cover"
-          fill
-          priority
-        />
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black"></div>
         <div className="container mx-auto relative z-10">
           <div className="flex flex-col items-center text-center">
             <div className="inline-block bg-green-100 p-2 rounded-lg mb-4">
               <Zap className="h-6 w-6 text-brand-primary" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               About Electrowizard Nepal
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8">
+            <p className="text-lg md:text-xl text-white mb-8">
               Pioneering the EV charging landscape in Nepal with innovative and
               reliable solutions for a sustainable future.
             </p>
