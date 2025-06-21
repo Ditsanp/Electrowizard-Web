@@ -131,8 +131,8 @@ export default function Contact() {
                       Send us a Message
                     </h3>
                     <p className="text-gray-600 mb-8">
-                      We'd love to hear from you. Send us a message and we'll
-                      respond as soon as possible.
+                      We&apos;d love to hear from you. Send us a message and
+                      we&apos;ll respond as soon as possible.
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-6">

@@ -105,7 +105,7 @@ export default function Testimonials() {
         <SectionHeader
           title={
             <span>
-              Don't Take Our Word For It, Hear From{" "}
+              Don&apos;t Take Our Word For It, Hear From{" "}
               <span className="text-brand-primary">Our Customers</span>
             </span>
           }
@@ -139,7 +139,7 @@ export default function Testimonials() {
 
                   {/* Quote */}
                   <blockquote className="text-2xl text-gray-800 text-center mb-8 leading-relaxed font-light">
-                    "{testimonials[activeIndex].content}"
+                    &quot;{testimonials[activeIndex].content}&quot;
                   </blockquote>
 
                   {/* Author */}
