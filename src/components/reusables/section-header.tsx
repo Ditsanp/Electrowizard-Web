@@ -17,6 +17,7 @@ export default function SectionHeader({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
+      id={id}
       // className="text-center lg:text-left grid lg:grid-cols-2 items-center justify-start mb-16"
     >
       <h2 className="text-4xl md:text-6xl font-bold mb-6">{title}</h2>

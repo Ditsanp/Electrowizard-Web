@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
   Search,
   Eye,
-  Zap,
   ChevronDown,
   ChevronRight,
   Filter,

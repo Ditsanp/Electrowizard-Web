@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Afacad, Fira_Sans, Montserrat, Outfit } from "next/font/google";
+import { Afacad } from "next/font/google";
 import "./globals.css";
 import AppThemeProvider from "@/providers/theme-provider";
 import { SiteFooter } from "@/components/global/site-footer";

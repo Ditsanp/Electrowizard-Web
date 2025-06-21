@@ -1,5 +1,3 @@
-import { Building, Check, Heart, Phone, Shield, Wrench } from "lucide-react";
-
 export default function AboutUsSection() {
   return (
     <section className="py-20 bg-brand-primary" id="about">

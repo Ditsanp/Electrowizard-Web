@@ -1,5 +1,4 @@
 "use client";
-
 import type React from "react";
 
 import { useState } from "react";
@@ -8,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
-import SectionHeader from "@/components/reusables/section-header";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
