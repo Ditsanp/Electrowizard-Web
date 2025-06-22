@@ -20,9 +20,9 @@ const ProductCard = ({
 }: ProductCardProps) => {
   return (
     <div
-      className={`${bgColor} rounded-2xl p-6 relative overflow-hidden h-full flex flex-col`}
+      className={`${bgColor} rounded-2xl border border-gray-200 p-6 relative overflow-hidden h-full transition-transform transform hover:scale-[1.02]`}
     >
-      <div className="relative z-10 flex gap-10 items-center h-full">
+      <div className="relative z-10 grid lg:grid-cols-2 justify-between h-full">
         {/* Header */}
         <div className="flex flex-col justify-between h-full">
           <div className="mb-4">
@@ -46,13 +46,15 @@ const ProductCard = ({
         </div>
 
         {/* Product image */}
-        <Image
-          width={800}
-          height={800}
-          src={imageSrc}
-          alt={imageAlt}
-          className="w-60 drop-shadow-lg"
-        />
+        <div className="flex items-center justify-center lg:justify-end h-full">
+          <Image
+            width={800}
+            height={800}
+            src={imageSrc}
+            alt={imageAlt}
+            className="w-40 lg:w-60 drop-shadow-lg"
+          />
+        </div>
       </div>
     </div>
   );

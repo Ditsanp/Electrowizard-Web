@@ -95,7 +95,7 @@ const Locations = () => {
   };
 
   return (
-    <div className="min-h-screen container bg-white">
+    <div className="min-h-screen py-16 container bg-white">
       {/* Header */}
       <div>
         <SectionHeader

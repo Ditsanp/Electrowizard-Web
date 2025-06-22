@@ -15,102 +15,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-
-interface Product {
-  id: number;
-  name: string;
-  category: string;
-  image: string;
-  shortDescription: string;
-  features: string[];
-}
-
-const products: Product[] = [
-  // Charging Stations (2 products)
-  {
-    id: 1,
-    name: "Dual-Gun Wall-Mounted Charging Station",
-    category: "Charging Stations",
-    image: "/placeholder.svg?height=300&width=300",
-    shortDescription:
-      "High-performance dual-gun wall-mounted charging station with smart connectivity features.",
-    features: [
-      "22kW Power Output",
-      "Dual Charging Ports",
-      "Smart App Control",
-      "Weather Resistant",
-    ],
-  },
-  {
-    id: 2,
-    name: "21-Inch Advertising Screen DC EV Charging Pile",
-    category: "Charging Stations",
-    image: "/placeholder.svg?height=300&width=300",
-    shortDescription:
-      "Advanced DC charging pile with integrated 21-inch advertising display for commercial use.",
-    features: [
-      "120kW Fast Charging",
-      "21-inch Touch Screen",
-      "Advertisement Display",
-      "Payment Integration",
-    ],
-  },
-  // Charging Cables (1 product)
-  {
-    id: 3,
-    name: "Type 2 to Type 2 Charging Cable",
-    category: "Charging Cables",
-    image: "/placeholder.svg?height=300&width=300",
-    shortDescription:
-      "High-quality Type 2 to Type 2 charging cable for AC charging with excellent durability.",
-    features: [
-      "32A Current Rating",
-      "5 Meter Length",
-      "IP55 Protection",
-      "Temperature Resistant",
-    ],
-  },
-  // Adapters (multiple products)
-  {
-    id: 4,
-    name: "CCS to CHAdeMO Adapter",
-    category: "Adapters",
-    image: "/placeholder.svg?height=300&width=300",
-    shortDescription:
-      "Universal adapter for connecting CCS vehicles to CHAdeMO charging stations.",
-    features: [
-      "High Current Capacity",
-      "Safety Certified",
-      "Compact Design",
-      "Universal Compatibility",
-    ],
-  },
-  {
-    id: 5,
-    name: "Type 1 to Type 2 Adapter",
-    category: "Adapters",
-    image: "/placeholder.svg?height=300&width=300",
-    shortDescription:
-      "Adapter for connecting Type 1 vehicles to Type 2 charging infrastructure.",
-    features: ["32A Rating", "Weatherproof", "Easy Connection", "Safety Lock"],
-  },
-  {
-    id: 6,
-    name: "Tesla to CCS Adapter",
-    category: "Adapters",
-    image: "/placeholder.svg?height=300&width=300",
-    shortDescription:
-      "Enables Tesla vehicles to charge at CCS charging stations worldwide.",
-    features: [
-      "Fast Charging Support",
-      "Tesla Compatible",
-      "Robust Construction",
-      "Portable Design",
-    ],
-  },
-];
-
-const categories = ["Charging Stations", "Charging Cables", "Adapters"];
+import { categories, products } from "@/constants/products";
 
 export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -419,7 +324,7 @@ export default function Products() {
                 >
                   <Card className="group hover:shadow-lg transition-all duration-300 border border-gray-200 overflow-hidden h-full flex flex-col py-0">
                     <div className="relative">
-                      <div className="aspect-square bg-gray-100 overflow-hidden">
+                      <div className="aspect-square max-h-72 mx-auto bg-white overflow-hidden">
                         <img
                           src={product.image || "/placeholder.svg"}
                           alt={product.name}

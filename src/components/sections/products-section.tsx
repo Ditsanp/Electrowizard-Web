@@ -11,7 +11,6 @@ const products = [
     title: "EV Charging Cables",
     description:
       "High-quality charging cables with durable build, compatible with various EV standards for efficient and safe energy transfer.",
-
     imageSrc: "/products/charger.webp", // Update the image path if needed
     imageAlt: "EV Charging Cable",
     bgColor: "bg-cyan-50",
@@ -21,7 +20,6 @@ const products = [
     title: "EV Charging Adapter",
     description:
       "CCS1 to GB/T EV adapter with high voltage and current support, designed for seamless cross-standard compatibility.",
-
     imageSrc: "/products/adapter.webp",
     imageAlt: "EV Charging Adapter",
     bgColor: "bg-yellow-50",
@@ -43,14 +41,17 @@ const products = [
 
     imageSrc: "/products/portable-charger.webp",
     imageAlt: "Portable EV Charger",
-    bgColor: "bg-green-50",
+    bgColor: "bg-red-50",
     textColor: "text-black",
   },
 ];
 
 export default function ProductsSection() {
   return (
-    <section id="products" className="py-16 relative overflow-hidden">
+    <section
+      id="products"
+      className="py-16 bg-green-50 relative overflow-hidden"
+    >
       <div className="container mx-auto relative z-10">
         <SectionHeader
           title="Revolutionary EV Charging Solutions"
@@ -58,7 +59,7 @@ export default function ProductsSection() {
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-auto">
           {products.map((product, index) => (
-            <div key={index} className="h-80">
+            <div key={index}>
               <ProductCard
                 title={product.title}
                 description={product.description}

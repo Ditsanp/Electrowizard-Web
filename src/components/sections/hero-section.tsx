@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <div className="relative h-auto min-h-screen xl:min-h-0 xl:h-screen 2xl:max-h-[1080px] flex flex-col">
+    <div className="relative h-auto pt-24 lg:pt-0 min-h-screen xl:min-h-0 xl:h-screen 2xl:max-h-[1080px] flex flex-col">
       <Image
         src="/hero-image.png"
         alt="Car Charging"
