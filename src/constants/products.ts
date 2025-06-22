@@ -590,3 +590,13 @@ export const getRelatedProducts = (productId: string) => {
     )
     .slice(0, 3);
 };
+
+export const getProducts = () => {
+  return products.map((p) => ({
+    id: p.id,
+    name: p.name,
+    category: p.category,
+    image: p.image,
+    shortDescription: p.shortDescription,
+  }));
+};

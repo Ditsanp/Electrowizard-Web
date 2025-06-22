@@ -67,7 +67,7 @@ const Locations = () => {
     location: (typeof locations)[0];
   }) => {
     return (
-      <div className="relative w-full h-full bg-gray-100 rounded-lg overflow-hidden">
+      <div className="relative w-full min-h-[250px] sm:min-h-[400px] h-full bg-gray-100 overflow-hidden">
         <iframe
           src={location.mapEmbedUrl}
           width="100%"
@@ -76,7 +76,7 @@ const Locations = () => {
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          className="w-full h-full"
+          className="w-full h-full min-h-[250px] sm:min-h-[400px]"
           title={`Map of ${location.name}`}
         />
 
@@ -95,7 +95,7 @@ const Locations = () => {
   };
 
   return (
-    <div className="min-h-screen py-16 container bg-white">
+    <div className="py-16 container bg-white">
       {/* Header */}
       <div>
         <SectionHeader
@@ -114,7 +114,7 @@ const Locations = () => {
       </div>
 
       {/* Responsive layout */}
-      <div className="h-[calc(100vh-200px)]">
+      <div>
         {/* Mobile Layout */}
         <div className="flex flex-col h-full lg:hidden">
           {/* Locations section - takes 40% of screen on mobile */}

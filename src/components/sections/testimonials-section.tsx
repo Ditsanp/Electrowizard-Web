@@ -100,7 +100,7 @@ export default function Testimonials() {
 
   return (
     <section className="py-24 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         {/* Header */}
         <SectionHeader
           title={
@@ -123,7 +123,7 @@ export default function Testimonials() {
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-              <Card className="border-0 shadow-lg bg-gray-50">
+              <Card className="shadow-none border bg-green-50">
                 <CardContent className="p-8 md:p-12">
                   {/* Rating */}
                   <div className="flex items-center justify-center mb-8">

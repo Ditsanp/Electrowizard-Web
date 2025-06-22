@@ -1,5 +1,5 @@
 import ProductDetailPage from "@/components/product-detail/product-detail";
-import { getProductById } from "@/constants/products";
+import { getProductById, getProducts } from "@/constants/products";
 
 export const generateMetadata = async ({
   params,
@@ -31,6 +31,13 @@ export const generateMetadata = async ({
     },
   };
 };
+
+export async function generateStaticParams() {
+  const products = getProducts();
+  return products.map((product) => ({
+    id: product.id.toString(),
+  }));
+}
 
 export default async function ProductPage({
   params,
