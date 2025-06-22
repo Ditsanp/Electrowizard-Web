@@ -67,12 +67,12 @@ export function SiteFooter() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <h3 className="text-lg font-semibold">Quick Links</h3>
+              <h3 className="text-lg font-semibold text-white">Quick Links</h3>
               <ul className="space-y-2">
                 {[
                   { name: "Home", href: "/" },
-                  { name: "Services", href: "#services" },
-                  { name: "Projects", href: "#projects" },
+                  { name: "Products", href: "#services" },
+                  { name: "Solutions", href: "#projects" },
                   { name: "About Us", href: "#about" },
                   { name: "Contact", href: "#contact" },
                 ].map((link, i) => (
@@ -96,18 +96,18 @@ export function SiteFooter() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h3 className="text-lg font-semibold">Contact Info</h3>
+              <h3 className="text-lg font-semibold text-white">Contact Info</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <MapPin className="h-5 w-5 text-brand-primary shrink-0 mt-0.5" />
                   <span className="text-gray-300">Kathmandu, Nepal</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Phone className="h-5 w-5 text-primary shrink-0" />
+                  <Phone className="h-5 w-5 text-brand-primary shrink-0" />
                   <span className="text-gray-300">+977 1 4123456</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Mail className="h-5 w-5 text-primary shrink-0" />
+                  <Mail className="h-5 w-5 text-brand-primary shrink-0" />
                   <span className="text-gray-300">
                     info@electrowizard.com.np
                   </span>

@@ -1,21 +1,15 @@
 "use client";
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Search,
-  Eye,
-  ChevronDown,
-  ChevronRight,
-  Filter,
-  Menu,
-  X,
-} from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
+import { Menu } from "lucide-react";
 import { categories, products } from "@/constants/products";
+import ProductsHero from "@/components/products/products-hero";
+import Breadcrumb from "@/components/products/breadcrumb";
+import ProductSearchBar from "@/components/products/product-search-bar";
+import CategorySidebar from "@/components/products/category-sidebar";
+import MobileCategoryMenu from "@/components/products/mobile-category-menu";
+import ProductGrid from "@/components/products/product-grid";
+import NoProductsFound from "@/components/products/no-products-found";
 
 export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,8 +20,6 @@ export default function Products() {
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
-
-    // Filter by search term
     if (searchTerm) {
       filtered = filtered.filter(
         (product) =>
@@ -40,14 +32,11 @@ export default function Products() {
           )
       );
     }
-
-    // Filter by categories
     if (selectedCategories.length > 0) {
       filtered = filtered.filter((product) =>
         selectedCategories.includes(product.category)
       );
     }
-
     return filtered;
   }, [searchTerm, selectedCategories]);
 
@@ -78,45 +67,11 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="relative py-42">
-        <Image
-          src="/pagehero.webp"
-          alt="Products Hero"
-          className="absolute inset-0 object-cover w-full h-full object-top"
-          fill
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-black/80"></div>
-        <div className="container mx-auto relative z-10">
-          <div className="flex flex-col items-start text-left">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Our <span className="text-green-600">Products</span>
-            </h1>
-            <p className="text-xl text-white mx-auto leading-relaxed">
-              ElectroWizard is a manufacturer of EV charging stations and offers
-              numerous advantages for electric vehicle owners. We provide fast
-              and efficient charging experiences, advanced safety features, and
-              compatibility with all types of electric vehicles.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Breadcrumb */}
-      <div className="bg-gray-50 border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center space-x-2 text-sm text-gray-600">
-            <span>ElectroWizard</span>
-            <span>›</span>
-            <span className="text-gray-900 font-medium">Products</span>
-          </nav>
-        </div>
-      </div>
-
+      <ProductsHero />
+      <Breadcrumb />
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-8">
-          {/* Mobile Filter Button and Search */}
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
             <div className="lg:hidden">
               <Button
@@ -128,183 +83,42 @@ export default function Products() {
                 Categories
               </Button>
             </div>
-
-            <div className="relative max-w-3xl w-full sm:w-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <Input
-                type="text"
-                placeholder="Search products..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 border-gray-300 focus:border-green-500 focus:ring-green-500"
-              />
-            </div>
+            <ProductSearchBar
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
           </div>
         </div>
       </div>
-
       {/* Mobile Filter Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-          <div className="fixed left-0 top-0 h-full w-80 bg-white shadow-lg">
-            <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900">
-                Categories
-              </h3>
-              <Button
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="ghost"
-                size="sm"
-                className="w-8 h-8 p-0"
-              >
-                <X className="w-4 h-4" />
-              </Button>
-            </div>
-
-            <div className="p-4">
-              {selectedCategories.length > 0 && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => {
-                    clearFilters();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="text-green-600 mb-4"
-                >
-                  Clear All
-                </Button>
-              )}
-
-              <div className="space-y-4">
-                {categories.map((category) => (
-                  <div
-                    key={category}
-                    className="border-b border-gray-100 pb-4 last:border-b-0"
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <label className="flex items-center space-x-3 cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={selectedCategories.includes(category)}
-                          onChange={() => toggleCategoryFilter(category)}
-                          className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
-                        />
-                        <span className="font-medium text-gray-900">
-                          {category}
-                        </span>
-                      </label>
-                      <button
-                        onClick={() => toggleCategory(category)}
-                        className="p-1 hover:bg-gray-100 rounded"
-                      >
-                        {expandedCategories.includes(category) ? (
-                          <ChevronDown className="w-4 h-4 text-gray-500" />
-                        ) : (
-                          <ChevronRight className="w-4 h-4 text-gray-500" />
-                        )}
-                      </button>
-                    </div>
-
-                    {expandedCategories.includes(category) && (
-                      <div className="ml-7 space-y-2">
-                        {getProductsByCategory(category).map((product) => (
-                          <div
-                            key={product.id}
-                            className="text-sm text-gray-700 py-1"
-                          >
-                            {product.name}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
+      <MobileCategoryMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        categories={categories}
+        selectedCategories={selectedCategories}
+        expandedCategories={expandedCategories}
+        toggleCategory={toggleCategory}
+        toggleCategoryFilter={toggleCategoryFilter}
+        clearFilters={clearFilters}
+        getProductsByCategory={getProductsByCategory}
+      />
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
         <div className="flex gap-8">
           {/* Sidebar - Desktop */}
           <div className="hidden lg:block w-80 flex-shrink-0">
             <div className="sticky top-8">
-              <Card className="border border-gray-200">
-                <CardContent className="px-6">
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                      <Filter className="w-5 h-5" />
-                      Categories
-                    </h3>
-                    {selectedCategories.length > 0 && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={clearFilters}
-                        className="text-green-600"
-                      >
-                        Clear All
-                      </Button>
-                    )}
-                  </div>
-
-                  <div className="space-y-4">
-                    {categories.map((category) => (
-                      <div
-                        key={category}
-                        className="border-b border-gray-100 pb-4 last:border-b-0"
-                      >
-                        <div className="flex items-center justify-between mb-3">
-                          <label className="flex items-center space-x-3 cursor-pointer">
-                            <input
-                              type="checkbox"
-                              checked={selectedCategories.includes(category)}
-                              onChange={() => toggleCategoryFilter(category)}
-                              className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
-                            />
-                            <span className="font-medium text-gray-900">
-                              {category}
-                            </span>
-                          </label>
-                          <button
-                            onClick={() => toggleCategory(category)}
-                            className="p-1 hover:bg-gray-100 rounded"
-                          >
-                            {expandedCategories.includes(category) ? (
-                              <ChevronDown className="w-4 h-4 text-gray-500" />
-                            ) : (
-                              <ChevronRight className="w-4 h-4 text-gray-500" />
-                            )}
-                          </button>
-                        </div>
-
-                        {expandedCategories.includes(category) && (
-                          <div className="ml-7 space-y-2">
-                            {getProductsByCategory(category).map((product) => (
-                              <div
-                                key={product.id}
-                                className="text-sm text-gray-700 py-1"
-                              >
-                                {product.name}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              <CategorySidebar
+                categories={categories}
+                selectedCategories={selectedCategories}
+                expandedCategories={expandedCategories}
+                toggleCategory={toggleCategory}
+                toggleCategoryFilter={toggleCategoryFilter}
+                clearFilters={clearFilters}
+                getProductsByCategory={getProductsByCategory}
+              />
             </div>
           </div>
-
           {/* Products Grid */}
           <div className="flex-1">
             <div className="mb-8">
@@ -312,81 +126,10 @@ export default function Products() {
                 Showing {filteredProducts.length} of {products.length} products
               </p>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-              {filteredProducts.map((product, index) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="h-full"
-                >
-                  <Card className="group hover:shadow-lg transition-all duration-300 border border-gray-200 overflow-hidden h-full flex flex-col py-0">
-                    <div className="relative">
-                      <div className="aspect-square max-h-72 mx-auto bg-white overflow-hidden">
-                        <img
-                          src={product.image || "/placeholder.svg"}
-                          alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <Link href={`/products/${product.id}`}>
-                          <Button
-                            size="sm"
-                            variant="secondary"
-                            className="w-8 h-8 p-0"
-                          >
-                            <Eye className="w-4 h-4" />
-                          </Button>
-                        </Link>
-                      </div>
-                    </div>
-
-                    <CardContent className="px-6 pb-6 flex-1 flex flex-col">
-                      <div className="mb-3">
-                        <span className="text-sm text-green-600 font-medium bg-green-50 px-3 py-1 rounded-full">
-                          {product.category}
-                        </span>
-                      </div>
-
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-green-600 transition-colors text-left">
-                        {product.name}
-                      </h3>
-
-                      <p className="text-base text-gray-600 mb-6 line-clamp-3 flex-1 leading-relaxed text-left">
-                        {product.shortDescription}
-                      </p>
-
-                      <div className="mt-auto">
-                        <Link href={`/products/${product.id}`}>
-                          <Button className="w-full bg-green-600 hover:bg-green-700 text-white text-base py-3">
-                            View Details
-                          </Button>
-                        </Link>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            {filteredProducts.length === 0 && (
-              <div className="text-center py-12">
-                <div className="text-gray-400 mb-4">
-                  <Search className="w-16 h-16 mx-auto" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  No products found
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Try adjusting your search or filter criteria
-                </p>
-                <Button onClick={clearFilters} variant="outline">
-                  Clear Filters
-                </Button>
-              </div>
+            {filteredProducts.length > 0 ? (
+              <ProductGrid products={filteredProducts} />
+            ) : (
+              <NoProductsFound clearFilters={clearFilters} />
             )}
           </div>
         </div>
