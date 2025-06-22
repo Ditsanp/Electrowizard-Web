@@ -11,7 +11,7 @@ const outfit = Afacad({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Electro Wizard Nepal | Pioneering EV Solutions in Kathmandu",
   description:
     "We are Electro Wizard Nepal, your trusted partner for innovative electric vehicle solutions in Kathmandu. Specializing in EV charging infrastructure, we provide high-quality products and services to power the future of transportation in Nepal.",
