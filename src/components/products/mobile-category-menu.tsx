@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Product } from "@/constants/products";
 import { ChevronDown, ChevronRight, X } from "lucide-react";
 
 interface MobileCategoryMenuProps {
@@ -10,7 +11,7 @@ interface MobileCategoryMenuProps {
   toggleCategory: (category: string) => void;
   toggleCategoryFilter: (category: string) => void;
   clearFilters: () => void;
-  getProductsByCategory: (category: string) => any[];
+  getProductsByCategory: (category: string) => Product[];
 }
 
 export default function MobileCategoryMenu({

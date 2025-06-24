@@ -3,11 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { ThemeToggle } from "./theme-toggle";
 import Image from "next/image";
 
 const navigation = [
@@ -21,6 +25,8 @@ const navigation = [
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -81,28 +87,31 @@ export function SiteHeader() {
             </Button>
           </motion.div>
 
-          <Sheet>
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] p-5">
+              <SheetTitle className="text-lg font-semibold">
+                <Link href="/" className="flex items-center space-x-2 group">
+                  <Image src={"/logo.png"} width={120} height={40} alt="Logo" />
+                </Link>
+              </SheetTitle>
               <nav className="flex flex-col gap-4 mt-8">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
+                    onClick={() => setIsSheetOpen(false)}
                     className="text-lg font-medium transition-colors hover:text-primary"
                   >
                     {item.name}
                   </Link>
                 ))}
                 <Button className="mt-4 w-full">Get a Quote</Button>
-                <div className="flex justify-end mt-4">
-                  <ThemeToggle />
-                </div>
               </nav>
             </SheetContent>
           </Sheet>

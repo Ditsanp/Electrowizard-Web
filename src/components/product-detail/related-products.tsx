@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/reusables/section-header";
 import ProductCard from "@/components/products/product-card";
+import { Product } from "@/constants/products";
 
 interface RelatedProductsProps {
-  relatedProducts: any[];
+  relatedProducts: Product[];
   currentProductName: string;
 }
 

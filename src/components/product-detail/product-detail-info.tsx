@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, ArrowLeft } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import Image from "next/image";
+import { Product } from "@/constants/products";
 
 interface ProductDetailInfoProps {
-  product: any;
+  product: Product;
 }
 
 export default function ProductDetailInfo({ product }: ProductDetailInfoProps) {

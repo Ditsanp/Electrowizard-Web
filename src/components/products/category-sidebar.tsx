@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Filter, ChevronDown, ChevronRight } from "lucide-react";
+import { Product } from "@/constants/products";
 
 interface CategorySidebarProps {
   categories: string[];
@@ -9,7 +10,7 @@ interface CategorySidebarProps {
   toggleCategory: (category: string) => void;
   toggleCategoryFilter: (category: string) => void;
   clearFilters: () => void;
-  getProductsByCategory: (category: string) => any[];
+  getProductsByCategory: (category: string) => Product[];
 }
 
 export default function CategorySidebar({

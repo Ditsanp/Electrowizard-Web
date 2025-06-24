@@ -1,7 +1,8 @@
+import { Product } from "@/constants/products";
 import ProductCard from "./product-card";
 
 export interface ProductGridProps {
-  products: any[];
+  products: Product[];
 }
 
 export default function ProductGrid({ products }: ProductGridProps) {
