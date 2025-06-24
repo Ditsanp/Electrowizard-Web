@@ -71,15 +71,15 @@ export function SiteFooter() {
               <ul className="space-y-2">
                 {[
                   { name: "Home", href: "/" },
-                  { name: "Products", href: "#services" },
-                  { name: "Solutions", href: "#projects" },
-                  { name: "About Us", href: "#about" },
-                  { name: "Contact", href: "#contact" },
+                  { name: "Products", href: "/products" },
+                  { name: "Solutions", href: "/solutions" },
+                  { name: "About Us", href: "/about-us" },
+                  { name: "Contact", href: "/#contact" },
                 ].map((link, i) => (
                   <li key={i}>
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-primary transition-colors duration-200 relative group"
+                      className="text-gray-300 hover:underline transition-colors duration-200 relative group"
                     >
                       {link.name}
                       <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
