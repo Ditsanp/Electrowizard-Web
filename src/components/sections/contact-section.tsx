@@ -75,7 +75,7 @@ export default function Contact() {
   ];
 
   return (
-    <section className="pb-10 bg-white">
+    <section className="pb-10 bg-white" id="contact">
       <div className="container mx-auto px-4">
         <div>
           {/* Desktop Layout */}

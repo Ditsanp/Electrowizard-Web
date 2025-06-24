@@ -1,11 +1,14 @@
+"use client";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Eye } from "lucide-react";
+import Image from "next/image";
+import { Product } from "@/constants/products";
 
 export interface ProductCardProps {
-  product: any;
+  product: Product;
   index: number;
 }
 
@@ -20,7 +23,9 @@ export default function ProductCard({ product, index }: ProductCardProps) {
       <Card className="group hover:shadow-lg transition-all duration-300 border border-gray-200 overflow-hidden h-full flex flex-col py-0">
         <div className="relative">
           <div className="aspect-square max-h-72 mx-auto bg-white overflow-hidden">
-            <img
+            <Image
+              width={300}
+              height={300}
               src={product.image || "/placeholder.svg"}
               alt={product.name}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -36,7 +41,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
         </div>
         <CardContent className="px-6 pb-6 flex-1 flex flex-col">
           <div className="mb-3">
-            <span className="text-sm text-green-600 font-medium bg-green-50 px-3 py-1 rounded-full">
+            <span className="text-sm text-brand-primary font-medium bg-green-50 px-3 py-1 rounded-full">
               {product.category}
             </span>
           </div>
@@ -48,7 +53,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           </p>
           <div className="mt-auto">
             <Link href={`/products/${product.id}`}>
-              <Button className="w-full bg-green-600 hover:bg-green-700 text-white text-base py-3">
+              <Button className="w-full cursor-pointer bg-green-600 hover:bg-green-700 text-white text-base py-3">
                 View Details
               </Button>
             </Link>

@@ -2,14 +2,22 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Zap, Shield, Briefcase, Rocket, Users, Leaf, Cpu } from "lucide-react";
-import Image from "next/image";
 
 export default function AboutUsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with padding to account for fixed navbar */}
-      <section className="relative bg-gradient-to-r from-green-50 to-green-100 pt-28 pb-20">
-        <div className="absolute inset-0 bg-black"></div>
+      <section className="relative bg-gradient-to-r from-green-50 to-green-100 py-40">
+        <div
+          aria-hidden
+          className="absolute inset-0 z-20 w-full h-full pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+        <div className="absolute inset-0 bg-zinc-950"></div>
         <div className="container mx-auto relative z-10">
           <div className="flex flex-col items-center text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">

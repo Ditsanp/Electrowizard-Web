@@ -2,13 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -22,19 +15,28 @@ export default function SolutionsPage() {
     <div>
       <section className="relative py-42">
         <Image
-          src="/pagehero.webp"
+          src="/page-hero.jpg"
           alt="Products Hero"
-          className="absolute inset-0 object-cover w-full h-full object-top"
+          className="absolute inset-0 object-cover object-center w-full h-full"
           fill
           quality={100}
         />
-        <div className="absolute inset-0 bg-black/80"></div>
+        <div
+          aria-hidden
+          className="absolute inset-0 z-20 w-full h-full pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+        <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto relative z-10">
           <div className="flex flex-col items-start text-left">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               Solutions for Every EV Charging Need
             </h1>
-            <p className="lg:text-xl text-white text-left leading-relaxed">
+            <p className="lg:text-xl text-white text-left lg:max-w-3xl leading-relaxed">
               Explore our range of EV charging solutions designed to meet the
               needs of every electric vehicle owner, from home charging to
               commercial installations.

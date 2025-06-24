@@ -118,7 +118,7 @@ export function SiteFooter() {
         </div>
 
         <motion.div
-          className="mt-12 pt-8 border-t border-muted flex flex-col md:flex-row justify-between items-center gap-4"
+          className="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

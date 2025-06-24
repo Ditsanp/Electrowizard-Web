@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -71,20 +72,24 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.5 }}
             >
-              <Button
-                size="lg"
-                className="gap-2 cursor-pointer group relative overflow-hidden bg-brand-primary text-white hover:bg-green-600 transition-colors "
-              >
-                <span className="relative z-10">Explore Products</span>
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-primary/20 text-primary hover:bg-primary/10 hover:text-primary"
-              >
-                About Us
-              </Button>
+              <Link href={"/products"} className="w-full">
+                <Button
+                  size="lg"
+                  className="gap-2 cursor-pointer group relative overflow-hidden bg-brand-primary text-white hover:bg-green-600 transition-colors "
+                >
+                  <span className="relative z-10">Explore Products</span>
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
+                </Button>
+              </Link>
+              <Link href={"/about-us"} className="w-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-primary/20 text-primary cursor-pointer"
+                >
+                  About Us
+                </Button>
+              </Link>
             </motion.div>
 
             <motion.div
