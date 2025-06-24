@@ -15,29 +15,36 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { FileText, Download, RotateCcw } from "lucide-react";
+import Image from "next/image";
 
 export default function SolutionsPage() {
   return (
-    <div className="min-h-screen pt-32 bg-gray-50 py-8">
-      <div className="container mx-auto ">
-        {/* Solutions Header */}
-        <div className="flex items-center justify-between mb-12">
-          <h1 className="text-4xl font-bold text-gray-900">Solutions</h1>
-          <Select defaultValue="all">
-            <SelectTrigger className="w-48">
-              <SelectValue placeholder="All Solutions" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Solutions</SelectItem>
-              <SelectItem value="charging">Charging Solutions</SelectItem>
-              <SelectItem value="portable">Portable Chargers</SelectItem>
-              <SelectItem value="dc-fast">DC Fast Chargers</SelectItem>
-            </SelectContent>
-          </Select>
+    <div>
+      <section className="relative py-42">
+        <Image
+          src="/pagehero.webp"
+          alt="Products Hero"
+          className="absolute inset-0 object-cover w-full h-full object-top"
+          fill
+          quality={100}
+        />
+        <div className="absolute inset-0 bg-black/80"></div>
+        <div className="container mx-auto relative z-10">
+          <div className="flex flex-col items-start text-left">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Solutions for Every EV Charging Need
+            </h1>
+            <p className="lg:text-xl text-white text-left leading-relaxed">
+              Explore our range of EV charging solutions designed to meet the
+              needs of every electric vehicle owner, from home charging to
+              commercial installations.
+            </p>
+          </div>
         </div>
-
+      </section>
+      <div className="container mx-auto ">
         {/* Blogs Section */}
-        <section className="mb-16">
+        <section className="my-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Blogs</h2>
           <Card className="bg-white border-0 shadow-sm">
             <CardContent className="py-16 px-8 text-center">

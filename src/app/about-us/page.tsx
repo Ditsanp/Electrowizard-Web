@@ -12,9 +12,6 @@ export default function AboutUsPage() {
         <div className="absolute inset-0 bg-black"></div>
         <div className="container mx-auto relative z-10">
           <div className="flex flex-col items-center text-center">
-            <div className="inline-block bg-green-100 p-2 rounded-lg mb-4">
-              <Zap className="h-6 w-6 text-brand-primary" />
-            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               About Electrowizard Nepal
             </h1>
@@ -54,31 +51,6 @@ export default function AboutUsPage() {
               </span>
               .
             </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-8 items-stretch">
-            <div className="flex-1">
-              <Image
-                width={600}
-                height={400}
-                src="/placeholder.svg?height=400&width=600"
-                alt="EV Charging Station"
-                className="w-full h-full object-cover rounded-lg shadow-md"
-              />
-            </div>
-            <div className="flex-1 flex flex-col justify-center">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                🔌 Powering Nepal&apos;s EV Revolution – One Charge at a Time!
-              </h2>
-              <p className="text-gray-700 mb-6">
-                We&apos;re committed to making sustainable transportation
-                accessible to everyone in Nepal through our innovative charging
-                solutions and customer-centric approach.
-              </p>
-              <Button className="bg-brand-primary hover:bg-brand-primary-dark text-white self-start">
-                Learn More About Our Products
-              </Button>
-            </div>
           </div>
         </div>
       </section>

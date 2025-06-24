@@ -10,7 +10,7 @@ export async function GET() {
   const staticPages = [
     { url: "/", priority: 1.0, changefreq: "daily" },
     { url: "/products", priority: 0.9, changefreq: "weekly" },
-    { url: "/about", priority: 0.7, changefreq: "monthly" },
+    { url: "/about-us", priority: 0.7, changefreq: "monthly" },
     { url: "/solutions", priority: 0.7, changefreq: "monthly" },
   ];
 

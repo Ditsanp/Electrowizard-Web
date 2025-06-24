@@ -14,7 +14,7 @@ import Image from "next/image";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-black border-t relative overflow-hidden">
+    <footer className="bg-black relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-20 right-10 w-32 h-32 border-2 border-green-500/10 rounded-full animate-spin-slow opacity-20"></div>
       <div className="absolute bottom-40 left-10 w-24 h-24 bg-green-500/5 rounded-md rotate-12 animate-float"></div>
