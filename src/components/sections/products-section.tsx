@@ -11,7 +11,7 @@ const products = [
     title: "EV Charging Cables",
     description:
       "High-quality charging cables with durable build, compatible with various EV standards for efficient and safe energy transfer.",
-    imageSrc: "/products/charger.webp", // Update the image path if needed
+    imageSrc: "/products/charger.png", // Update the image path if needed
     imageAlt: "EV Charging Cable",
     bgColor: "bg-cyan-50",
     textColor: "text-black",

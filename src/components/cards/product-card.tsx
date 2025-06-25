@@ -52,7 +52,7 @@ const ProductCard = ({
             height={800}
             src={imageSrc}
             alt={imageAlt}
-            className="w-40 lg:w-60 drop-shadow-lg"
+            className="w-40 lg:w-60 xl:w-68 drop-shadow-lg"
           />
         </div>
       </div>

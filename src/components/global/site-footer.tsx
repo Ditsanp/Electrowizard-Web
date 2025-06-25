@@ -75,6 +75,7 @@ export function SiteFooter() {
                   { name: "Solutions", href: "/solutions" },
                   { name: "About Us", href: "/about-us" },
                   { name: "Contact", href: "/#contact" },
+                  { name: "Gallery", href: "/gallery" },
                 ].map((link, i) => (
                   <li key={i}>
                     <Link
