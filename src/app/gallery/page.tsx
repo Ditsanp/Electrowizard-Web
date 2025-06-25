@@ -247,7 +247,7 @@ export default function Gallery() {
                     className="cursor-pointer group"
                     onClick={() => openLightbox(image)}
                   >
-                    <Card className="overflow-hidden py-0 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                    <Card className="overflow-hidden py-0 border border-gray-200 gap-0 hover:shadow-lg transition-all duration-300">
                       <div className="relative aspect-square">
                         <Image
                           src={image.src || "/placeholder.svg"}
@@ -255,7 +255,7 @@ export default function Gallery() {
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-all duration-300 flex items-center justify-center">
                           <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
                       </div>
@@ -353,7 +353,7 @@ export default function Gallery() {
                     className="cursor-pointer group"
                     onClick={() => openLightbox(image)}
                   >
-                    <Card className="overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300 py-0">
+                    <Card className="overflow-hidden border h-full border-gray-200 hover:shadow-lg transition-all duration-300 py-0">
                       <div className="relative aspect-square">
                         <Image
                           src={image.src || "/placeholder.svg"}
@@ -399,7 +399,7 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black opacity-90 flex items-center justify-center p-4"
             onClick={closeLightbox}
           >
             <div className="relative max-w-6xl max-h-full w-full h-full flex items-center justify-center">
@@ -408,7 +408,7 @@ export default function Gallery() {
                 onClick={closeLightbox}
                 variant="ghost"
                 size="sm"
-                className="absolute top-4 right-4 z-10 text-white hover:bg-white hover:bg-opacity-20 w-10 h-10 p-0"
+                className="absolute top-4 right-4 z-10 text-white hover:bg-white hover:opacity-20 w-10 h-10 p-0"
               >
                 <X className="w-6 h-6" />
               </Button>
@@ -423,7 +423,7 @@ export default function Gallery() {
                     }}
                     variant="ghost"
                     size="sm"
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:bg-white hover:bg-opacity-20 w-12 h-12 p-0"
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:bg-white hover:opacity-20 w-12 h-12 p-0"
                   >
                     <ChevronLeft className="w-8 h-8" />
                   </Button>
@@ -434,7 +434,7 @@ export default function Gallery() {
                     }}
                     variant="ghost"
                     size="sm"
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:bg-white hover:bg-opacity-20 w-12 h-12 p-0"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:bg-white hover:opacity-20 w-12 h-12 p-0"
                   >
                     <ChevronRight className="w-8 h-8" />
                   </Button>
@@ -458,7 +458,7 @@ export default function Gallery() {
                 />
 
                 {/* Image Info */}
-                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4">
+                <div className="absolute bottom-0 left-0 right-0 bg-black opacity-75 text-white p-4">
                   <h3 className="text-xl font-semibold mb-2">
                     {selectedImage.title}
                   </h3>
@@ -478,7 +478,7 @@ export default function Gallery() {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="text-white hover:bg-white hover:bg-opacity-20"
+                        className="text-white hover:bg-white hover:opacity-20"
                       >
                         <Download className="w-4 h-4 mr-2" />
                         Download
@@ -486,7 +486,7 @@ export default function Gallery() {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="text-white hover:bg-white hover:bg-opacity-20"
+                        className="text-white hover:bg-white hover:opacity-20"
                       >
                         <Share2 className="w-4 h-4 mr-2" />
                         Share
@@ -498,7 +498,7 @@ export default function Gallery() {
 
               {/* Image Counter */}
               {filteredImages.length > 1 && (
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-75 text-white px-3 py-1 rounded-full text-sm">
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black opacity-75 text-white px-3 py-1 rounded-full text-sm">
                   {currentImageIndex + 1} / {filteredImages.length}
                 </div>
               )}
